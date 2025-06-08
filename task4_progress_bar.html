@@ -1,0 +1,42 @@
+// Задание 4: Прогресс-бар для асинхронного выполнения
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Прогресс-бар</title>
+    <style>
+        #progress-bar {
+            width: 0;
+            height: 30px;
+            background-color: green;
+            transition: width 1s;
+        }
+        #container {
+            width: 100%;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="progress-bar"></div>
+    </div>
+    <p id="message"></p>
+
+    <script>
+        const progressBar = document.getElementById('progress-bar');
+        const message = document.getElementById('message');
+        let progress = 0;
+
+        const interval = setInterval(() => {
+            progress += 20;
+            progressBar.style.width = progress + '%';
+            if (progress >= 100) {
+                clearInterval(interval);
+                message.textContent = 'Готово!';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
